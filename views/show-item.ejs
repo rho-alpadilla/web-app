@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Item</title>
+  <link href="/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto p-8">
+    <h1 class="text-4xl text-blue-500 mb-6 text-center">Show Item</h1>
+
+    <!-- Show item -->
+    <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <div class="mb-6">
+        <h2 class="text-xl font-medium">Name: <%= item.name %></h2>
+        <p class="mt-4">
+          <strong>Price List:</strong> <%= item.price_list %>
+        </p>
+        <p class="mt-4">
+          <strong>Description:</strong> <%= item.description %>
+        </p>
+        <p class="mt-4">
+          <strong>Date Created:</strong> <%= item.date_created %>
+        </p>
+      </div>
+
+      <!-- Back button -->
+      <div class="mt-6">
+        <a
+          href="/"
+          class="block w-full bg-blue-500 text-white py-3 text-center rounded-lg hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        >
+          Back to Items
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

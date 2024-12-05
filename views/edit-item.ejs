@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Item</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto p-8">
+    <h1 class="text-4xl text-blue-500 mb-6 text-center">Edit Item</h1>
+
+    <!-- Edititem-->
+    <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+      <form action="/update/<%= item.id %>" method="POST">
+        <div class="mb-6">
+          <label for="name" class="block text-lg font-medium">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value="<%= item.name %>"
+            required
+            class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div class="mb-6">
+          <label for="price_list" class="block text-lg font-medium">Price List</label>
+          <input
+            type="text"
+            id="price_list"
+            name="price_list"
+            value="<%= item.price_list %>"
+            required
+            class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div class="mb-6">
+          <label for="description" class="block text-lg font-medium">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          ><%= item.description %></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        >
+          Update Item
+        </button>
+      </form>
+
+      <!-- Back button -->
+      <div class="mt-6">
+        <a
+          href="/"
+          class="block w-full bg-gray-500 text-white py-2 text-center rounded hover:bg-gray-600"
+        >
+          Back to Items
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

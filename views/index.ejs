@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Items List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto p-8">
+    <h1 class="text-4xl text-blue-500 mb-4 text-center">Items List</h1>
+
+    <!-- Adds new item -->
+    <h2 class="text-2xl text-center mb-4">Add New Item</h2>
+    <form action="/add" method="POST" class="max-w-lg mx-auto bg-white p-6 rounded shadow">
+      <div class="mb-4">
+        <label for="name" class="block text-lg font-medium">Name</label>
+        <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="mb-4">
+        <label for="price_list" class="block text-lg font-medium">Price List</label>
+        <input type="text" id="price_list" name="price_list" required class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="mb-4">
+        <label for="description" class="block text-lg font-medium">Description</label>
+        <textarea id="description" name="description" rows="4" class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Add Item</button>
+    </form>
+
+    <!-- Table w/ items -->
+    <h2 class="text-2xl text-center mb-4 mt-8">Items in Database</h2>
+    <div class="overflow-x-auto">
+      <table class="table-auto w-full mx-auto border-collapse bg-white shadow rounded">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2 border text-left">ID</th>
+            <th class="px-4 py-2 border text-left">Name</th>
+            <th class="px-4 py-2 border text-left">Price List</th>
+            <th class="px-4 py-2 border text-left">Description</th>
+            <th class="px-4 py-2 border text-left">Date Created</th>
+            <th class="px-4 py-2 border text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach(item => { %>
+            <tr class="hover:bg-gray-50">
+              <td class="px-4 py-2 border"><%= item.id %></td>
+              <td class="px-4 py-2 border"><%= item.name %></td>
+              <td class="px-4 py-2 border"><%= item.price_list %></td>
+              <td class="px-4 py-2 border"><%= item.description %></td>
+              <td class="px-4 py-2 border"><%= item.date_created %></td>
+              <td class="px-4 py-2 border">
+                <div class="flex flex-wrap gap-2">
+                  <a href="/show-item/<%= item.id %>" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    Show
+                  </a>
+                  <a href="/edit/<%= item.id %>" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                    Edit
+                  </a>
+                  <form action="/delete/<%= item.id %>" method="POST" class="inline">
+                    <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300">
+                      Delete
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
